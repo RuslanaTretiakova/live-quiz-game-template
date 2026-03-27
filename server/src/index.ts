@@ -1,6 +1,13 @@
 import { WebSocketServer, WebSocket } from 'ws';
 import * as dotenv from 'dotenv';
-import type { WSMessage } from './types';
+import type { WSMessage, RegData, CreateGameData, JoinGameData, StartGameData, AnswerData } from './types';
+
+import { handleReg }        from './handlers/reg';
+import { handleCreateGame } from './handlers/createGame';
+import { handleJoinGame }   from './handlers/joinGame';
+import { handleStartGame }  from './handlers/startGame';
+import { handleAnswer }     from './handlers/answer';
+import { handleDisconnect } from './disconnect';
 
 dotenv.config();
 
@@ -24,16 +31,16 @@ wss.on('connection', (ws: WebSocket) => {
     const { type, data } = msg;
 
     switch (type) {
-      case 'reg':break;
-      case 'create_game':  break;
-      case 'join_game': break;
-      case 'start_game': break;
-      case 'answer': break;
+      case 'reg':          handleReg(ws, data as RegData);               break;
+      case 'create_game':  handleCreateGame(ws, data as CreateGameData); break;
+      case 'join_game':    handleJoinGame(ws, data as JoinGameData);     break;
+      case 'start_game':   handleStartGame(ws, data as StartGameData);   break;
+      case 'answer':       handleAnswer(ws, data as AnswerData);         break;
       default:
         ws.send(JSON.stringify({ type: 'error', data: { message: `Unknown command: ${type}` }, id: 0 }));
     }
   });
 
-  ws.on('close', () => {});
-  ws.on('error', () => {});
+  ws.on('close', () => handleDisconnect(ws));
+  ws.on('error', () => handleDisconnect(ws));
 });
