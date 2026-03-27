@@ -1,6 +1,6 @@
 import { WebSocketServer, WebSocket } from 'ws';
 import * as dotenv from 'dotenv';
-import type { WSMessage, RegData, CreateGameData, JoinGameData, StartGameData, AnswerData } from './types';
+import type { WSMessage, RegData, CreateGameData, JoinGameData, StartGameData, AnswerData } from './types.js';
 
 import { handleReg } from './handlers/reg.js';
 import { handleCreateGame } from './handlers/createGame.js';
