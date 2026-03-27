@@ -1,6 +1,5 @@
 import type { WebSocket } from 'ws';
-import type { User, Game } from './types';
-
+import type { User, Game } from './types.js';
 
 export const users = new Map<string, User>(); 
 export const usersByName = new Map<string, User>();

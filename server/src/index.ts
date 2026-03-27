@@ -2,12 +2,12 @@ import { WebSocketServer, WebSocket } from 'ws';
 import * as dotenv from 'dotenv';
 import type { WSMessage, RegData, CreateGameData, JoinGameData, StartGameData, AnswerData } from './types';
 
-import { handleReg }        from './handlers/reg';
-import { handleCreateGame } from './handlers/createGame';
-import { handleJoinGame }   from './handlers/joinGame';
-import { handleStartGame }  from './handlers/startGame';
-import { handleAnswer }     from './handlers/answer';
-import { handleDisconnect } from './disconnect';
+import { handleReg } from './handlers/reg.js';
+import { handleCreateGame } from './handlers/createGame.js';
+import { handleJoinGame }   from './handlers/joinGame.js';
+import { handleStartGame }  from './handlers/startGame.js';
+import { handleAnswer }     from './handlers/answer.js';
+import { handleDisconnect } from './disconnect.js';
 
 dotenv.config();
 

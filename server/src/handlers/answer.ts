@@ -1,8 +1,8 @@
 import type { WebSocket } from 'ws';
-import type { AnswerData, Game } from '../types';
-import { games, indexByWs } from '../store';
-import { send, broadcast, getPlayerListData } from '../utils';
-import { sendQuestion } from './startGame';
+import type { AnswerData, Game } from '../types.js';
+import { games, indexByWs } from '../store.js';
+import { send, broadcast, getPlayerListData } from '../utils.js';
+import { sendQuestion } from './startGame.js';
 
 const BASE_POINTS = 1000;
 

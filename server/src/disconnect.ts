@@ -1,6 +1,6 @@
 import type { WebSocket } from 'ws';
-import { users, games, codeToGameId, wsByIndex, indexByWs } from './store';
-import { broadcast, getPlayerListData } from './utils';
+import { users, games, codeToGameId, wsByIndex, indexByWs } from './store.js';
+import { broadcast, getPlayerListData } from './utils.js';
 
 export function handleDisconnect(ws: WebSocket): void {
   const playerIndex = indexByWs.get(ws);

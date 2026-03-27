@@ -1,7 +1,7 @@
 import type { WebSocket } from 'ws';
-import type { JoinGameData } from '../types';
-import { users, games, codeToGameId, indexByWs } from '../store';
-import { send, broadcast, getPlayerListData } from '../utils';
+import type { JoinGameData } from '../types.js';
+import { users, games, codeToGameId, indexByWs } from '../store.js';
+import { send, broadcast, getPlayerListData } from '../utils.js';
 
 export function handleJoinGame(ws: WebSocket, data: JoinGameData): void {
   const playerIndex = indexByWs.get(ws);

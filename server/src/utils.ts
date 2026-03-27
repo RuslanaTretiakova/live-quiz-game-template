@@ -1,6 +1,6 @@
 import { WebSocket } from 'ws';
-import type { Game } from './types';
-import { users } from './store';
+import type { Game } from './types.js';
+import { users } from './store.js';
 
 export function send(ws: WebSocket, type: string, data: unknown): void {
   if (ws.readyState === WebSocket.OPEN) {

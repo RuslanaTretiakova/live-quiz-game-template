@@ -1,7 +1,7 @@
 import type { WebSocket } from 'ws';
-import type { RegData } from '../types';
-import { users, usersByName, wsByIndex, indexByWs, nextUserIndex } from '../store';
-import { send } from '../utils';
+import type { RegData } from '../types.js';
+import { users, usersByName, wsByIndex, indexByWs, nextUserIndex } from '../store.js';
+import { send } from '../utils.js';
 
 export function handleReg(ws: WebSocket, data: RegData): void {
   const { name, password } = data;
@@ -18,7 +18,6 @@ export function handleReg(ws: WebSocket, data: RegData): void {
       send(ws, 'reg', { error: true, errorText: 'Wrong password' });
       return;
     }
-   
     existing.ws = ws;
     wsByIndex.set(existing.index, ws);
     indexByWs.set(ws, existing.index);
