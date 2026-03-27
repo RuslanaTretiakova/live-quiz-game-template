@@ -3,6 +3,7 @@ import type { CreateGameData } from '../types';
 import { games, codeToGameId, indexByWs } from '../store';
 import { send, generateGameId, generateRoomCode } from '../utils';
 
+
 export function handleCreateGame(ws: WebSocket, data: CreateGameData): void {
   const hostIndex = indexByWs.get(ws);
   if (!hostIndex) {
