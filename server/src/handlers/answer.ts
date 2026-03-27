@@ -1,7 +1,7 @@
 import type { WebSocket } from 'ws';
 import type { AnswerData, Game } from '../types.js';
-import { games, indexByWs } from '../store.js';
-import { send, broadcast, getPlayerListData } from '../utils.js';
+import { games, codeToGameId, indexByWs } from '../store.js';
+import { send, broadcast } from '../utils.js';
 import { sendQuestion } from './startGame.js';
 
 const BASE_POINTS = 1000;
@@ -83,15 +83,7 @@ export function finishGame(game: Game): void {
 
   broadcast(game, 'game_finished', { scoreboard });
 
-  const { codeToGameId, games } = require('../store');
   codeToGameId.delete(game.code);
   games.delete(game.id);
-}
-
-function setTimeout(arg0: () => void, arg1: number) {
-    throw new Error('Function not implemented.');
-}
-function clearTimeout(questionTimer: any) {
-    throw new Error('Function not implemented.');
 }
 

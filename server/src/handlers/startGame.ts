@@ -2,6 +2,7 @@ import type { WebSocket } from 'ws';
 import type { Game, StartGameData } from '../types.js';
 import { games, indexByWs } from '../store.js';
 import { send, broadcast } from '../utils.js';
+import { resolveQuestion } from './answer.js';
 
 export function handleStartGame(ws: WebSocket, data: StartGameData): void {
   const hostIndex = indexByWs.get(ws);
@@ -22,7 +23,7 @@ export function handleStartGame(ws: WebSocket, data: StartGameData): void {
   sendQuestion(game);
 }
 
-export function sendQuestion(game: ReturnType<typeof games.get> & {}): void {
+export function sendQuestion(game: Game): void {
   if (!game) return;
 
   const q = game.questions[game.currentQuestion];
@@ -44,12 +45,5 @@ export function sendQuestion(game: ReturnType<typeof games.get> & {}): void {
   });
 
   game.questionTimer = setTimeout(() => resolveQuestion(game), q.timeLimitSec * 1000);
-}
-
-function setTimeout(arg0: () => any, arg1: number): any {
-    throw new Error('Function not implemented.');
-}
-function resolveQuestion(game: Game): any {
-    throw new Error('Function not implemented.');
 }
 
