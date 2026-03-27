@@ -24,12 +24,8 @@ export function handleDisconnect(ws: WebSocket): void {
 
     const before = game.players.length;
     game.players = game.players.filter(p => p.index !== playerIndex);
-    if (game.players.length !== before && game.status === 'waiting') {
+    if (game.players.length !== before) {
       broadcast(game, 'update_players', getPlayerListData(game));
     }
   }
-}
-
-function clearTimeout(questionTimer: any) {
-    throw new Error('Function not implemented.');
 }
